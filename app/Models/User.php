@@ -22,6 +22,8 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'role',
+        'token_device'
     ];
 
     /**
@@ -53,6 +55,12 @@ class User extends Authenticatable implements JWTSubject
     {
         return [
             'email' => $this->email,
+            'role' => $this->role,
         ];
+    }
+
+    public function information()
+    {
+        return $this->hasOne(Information::class);
     }
 }
